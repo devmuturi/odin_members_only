@@ -6,10 +6,17 @@
 
 <div id="posts">
   <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+  <div class="container my-5">
+      <div class="col">
+      <div class="card">
+        <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card Title 1</h5>
+          <p class="card-text">This is some text for the first card. You can replace this with any content you like.</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <% end %>
 </div>
 
