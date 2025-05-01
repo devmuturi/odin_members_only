@@ -4,20 +4,24 @@
 
 <h1>Posts</h1>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-  <div class="container my-5">
-      <div class="col">
-      <div class="card">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card Title 1</h5>
-          <p class="card-text">This is some text for the first card. You can replace this with any content you like.</p>
+<div class="container my-5">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <% if post.image.attached? %>
+            <%= image_tag post.image.variant(:thumb), class: "card-img-top" %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to post.title, post_path(post) %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= post.user.email if user_signed_in? && post.user.present? %></h6>
+            <p class="card-text"><%= post.body %></p>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
+
 
 <%= link_to "New post", new_post_path %>
